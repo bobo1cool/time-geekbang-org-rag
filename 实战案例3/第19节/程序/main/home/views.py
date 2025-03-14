@@ -19,7 +19,7 @@ def index(request):
     查询结果 = None
     if request.method == 'POST':
         用户输入 = request.POST['question']
-
+        print(用户输入)
         查询结果 = 查询(用户输入)
 
         查询结果json格式 = '{"知识内容": "' + 查询结果["知识内容"] + '"}'

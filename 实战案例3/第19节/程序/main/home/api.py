@@ -6,11 +6,12 @@ import requests
 from .models import 知识主表, 知识详细表, 销售入账记录
 def 调用向量编码服务(输入字符串):
     body_json = {
-        "input":输入字符串
+        "model": "mxbai-embed-large:latest",
+        "prompt":输入字符串
     }
-    response = requests.post(f"http://127.0.0.1:8902/api/embedding/encode", json=body_json)
+    response = requests.post(f"http://192.168.220.15:11434/api/embeddings", json=body_json)
     if response.status_code == 200:
-        return json.loads(response.text)['向量编码']
+        return json.loads(response.text)['embedding']
     else:
         raise Exception('失败')
 

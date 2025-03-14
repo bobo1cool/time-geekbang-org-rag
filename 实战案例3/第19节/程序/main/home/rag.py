@@ -7,8 +7,11 @@ from .models import 对话记录
 
 #region 跟具体大模型相关的，如果需要修改大模型，可能需要修改这部分函数
 def get_access_token():
-  ernie_client_id = os.getenv("baiduclientid")
-  ernie_client_secret = os.getenv("baiduclientsecret")
+  
+  ernie_client_id = "9YapJnm5SOMduW7dkcJvv2lp"
+
+  # ernie_client_secret = os.getenv("baiduclientsecret")
+  ernie_client_secret = "9jbVjE5c7eRcd1j1i4eHFSQuYBAOBKhW"
   url = f"https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id={ernie_client_id}&client_secret={ernie_client_secret}"
   
   playload = json.dumps("")

@@ -25,7 +25,10 @@ def 查询(查询参数):
                     return 模糊搜索结果
     else:
         查询字符串 = 查询参数.strip()
+        
+        print(f"调用向量编码服务: {查询字符串}")
         查询字符串向量编码 = 调用向量编码服务(查询字符串)
+        print(f"查询字符串向量编码 length: {len(查询字符串向量编码)}")
         模糊搜索结果RawQuerySet = 知识详细表.objects.raw('SELECT *, 1 - (向量编码 <=> %s) AS 余弦相似度,文本内容 FROM public."home_知识详细表" order by 余弦相似度 desc;',[str(查询字符串向量编码),])
 
         选取的结果 = 模糊搜索结果RawQuerySet[0]
